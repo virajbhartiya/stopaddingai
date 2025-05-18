@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STOP ADDING AI</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0d1117;
+      --text-color: #f0f6fc;
+      --accent-color: #ff5252;
+      --secondary-color: #58a6ff;
+      --muted-color: #8b949e;
+      --border-color: #30363d;
+      --warning-color: #f0883e;
+      --success-color: #3fb950;
+    }
+
+    .light-theme {
+      --bg-color: #ffffff;
+      --text-color: #24292e;
+      --accent-color: #d73a49;
+      --secondary-color: #0366d6;
+      --muted-color: #6a737d;
+      --border-color: #e1e4e8;
+      --warning-color: #e36209;
+      --success-color: #2ea043;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 1rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--accent-color);
+      transition: color 0.3s ease;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin: 2rem 0;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 0px rgba(255, 82, 82, 0.2);
+      letter-spacing: 2px;
+      word-wrap: break-word;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-top: 2.5rem;
+      border-bottom: 2px solid var(--accent-color);
+      padding-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      word-wrap: break-word;
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-top: 1.5rem;
+      border-left: 3px solid var(--accent-color);
+      padding-left: 10px;
+      word-wrap: break-word;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+    }
+
+    a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    ul,
+    ol {
+      margin-bottom: 2rem;
+      padding-left: 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    li::marker {
+      color: var(--accent-color);
+    }
+
+    footer {
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+      padding-top: 2rem;
+      color: var(--muted-color);
+    }
+
+    blockquote {
+      border-left: 4px solid var(--accent-color);
+      padding-left: 1rem;
+      margin-left: 0;
+      font-style: italic;
+      color: var(--muted-color);
+    }
+
+    .toggle-theme {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-color);
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+      z-index: 100;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 82, 82, 0.1);
+    }
+
+    .toggle-theme:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 82, 82, 0.2);
+    }
+
+    .cursing {
+      font-weight: bold;
+      color: var(--accent-color);
+    }
+
+    .highlight {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      padding: 0 5px;
+      border-radius: 3px;
+    }
+
+    .warning {
+      background-color: var(--warning-color);
+      color: var(--bg-color);
+      padding: 0 5px;
+      border-radius: 3px;
+    }
+
+    .success {
+      background-color: var(--success-color);
+      color: var(--bg-color);
+      padding: 0 5px;
+      border-radius: 3px;
+    }
+
+    .big-text {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .small-caps {
+      font-variant: small-caps;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .underline {
+      text-decoration: underline;
+      text-decoration-color: var(--accent-color);
+      text-decoration-thickness: 2px;
+    }
+
+    .strike {
+      text-decoration: line-through;
+      text-decoration-color: var(--accent-color);
+    }
+
+    .header-intro {
+      font-size: 1.1rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .example-block {
+      background-color: rgba(255, 82, 82, 0.1);
+      border-left: 4px solid var(--accent-color);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 5px 5px 0;
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+
+    .warning-block {
+      background-color: rgba(240, 136, 62, 0.1);
+      border-left: 4px solid var(--warning-color);
+      padding: 1rem;
+      margin: 1.5rem 0;
+      border-radius: 0 5px 5px 0;
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+      overflow-x: auto;
+    }
+
+    .glowing-text {
+      text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color);
+    }
+
+    .card {
+      border: 1px solid var(--border-color);
+      border-radius: 5px;
+      padding: 1rem;
+      margin: 0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      overflow-x: auto;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      border-left: none;
+      padding-left: 0;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .examples-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: bold;
+    }
+
+    .handwritten {
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 1.1em;
+      color: var(--warning-color);
+    }
+
+    .monospace {
+      font-family: monospace;
+      background-color: rgba(88, 166, 255, 0.1);
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    .blinking {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.5;
+      }
+    }
+
+    .shake:hover {
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      10%,
+      30%,
+      50%,
+      70%,
+      90% {
+        transform: translateX(-5px);
+      }
+
+      20%,
+      40%,
+      60%,
+      80% {
+        transform: translateX(5px);
+      }
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin: 1.5rem 0;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--muted-color);
+      transition: color 0.3s ease, transform 0.2s ease;
+      font-size: 1rem;
+    }
+
+    .social-link:hover {
+      color: var(--secondary-color);
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .social-link i {
+      font-size: 1.2rem;
+    }
+
+    .footer-container {
+      background-color: rgba(255, 82, 82, 0.05);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-top: 4rem;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .footer-tagline {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      color: var(--accent-color);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-description {
+      line-height: 1.6;
+      max-width: 100%;
+      margin: 0 0 1rem 0;
+    }
+
+    .footer-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-color), transparent);
+      margin: 1rem 0;
+    }
+
+    /* Responsive styles */
+    @media (min-width: 768px) {
+      html {
+        font-size: 18px;
+      }
+
+      body {
+        padding: 2rem 1rem;
+      }
+
+      h1 {
+        font-size: 3rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      .header-intro {
+        font-size: 1.2rem;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-container {
+        padding: 2rem;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .examples-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1200px;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      html {
+        font-size: 14px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      .toggle-theme {
+        top: 0.5rem;
+        right: 0.5rem;
+        font-size: 1.2rem;
+        width: 35px;
+        height: 35px;
+      }
+
+      .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .card:hover {
+        transform: none;
+      }
+
+      .example-block,
+      .warning-block {
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <button class="toggle-theme" aria-label="Toggle dark/light theme">
+      <i class="fa-solid fa-circle-half-stroke"></i>
+    </button>
+
+    <h1 class="shake">STOP ADDING AI</h1>
+    <p class="header-intro">NOT <span class="gradient-text">EVERYTHING</span> NEEDS ARTIFICIAL INTELLIGENCE, YOU <span
+        class="cursing">TRENDY</span> FOOL</p>
+
+    <p>Look, I get it. You saw ChatGPT and thought, "<span class="cursing">Holy shit</span>, I need to add this to my
+      todo app immediately!" <span class="cursing">Fucking</span> adorable. Like a child who just discovered <span
+        class="glowing-text">glitter</span> and wants to add it to <span class="italic">everything</span> they own.</p>
+
+    <h2>WHAT THE <span class="cursing">FUCK</span> IS THIS ABOUT?</h2>
+    <p>This is about acknowledging that not every <span class="cursing">goddamn</span> product needs AI. Your simple
+      website doesn't need a <span class="strike">"smart"</span> chatbot. Your photo app doesn't need to <span
+        class="strike">"enhance"</span> everyone's face. Your email client doesn't need to write emails for you.
+      Sometimes, the best feature is <span class="highlight">NO FEATURE</span>, you feature-creeping maniac.</p>
+
+    <h2>WHY THE <span class="cursing">FUCK</span> SHOULDN'T I ADD AI TO MY PRODUCT?</h2>
+    <p>Because you're not making your product better; you're making it <span class="warning">worse</span>. You're adding
+      complexity, cost, ethical concerns, and privacy nightmares to something that worked perfectly fine before you
+      decided it needed to be <span class="strike">"smarter."</span></p>
+
+    <h3>USERS DON'T WANT YOUR HALF-BAKED AI <span class="cursing">BULLSHIT</span>, THEY WANT A PRODUCT THAT <span
+        class="success">WORKS RELIABLY</span></h3>
+    <p>Most implementations of AI in products are garbage. They're unreliable, they <span
+        class="handwritten">hallucinate</span>, they give wrong answers with absolute confidence, and they frustrate
+      users. You're not enhancing the experience; you're turning it into a <span class="cursing">goddamn</span> beta
+      test where your users are the guinea pigs.</p>
+
+    <div class="example-block">
+      <p><strong>Example:</strong> Remember when Microsoft added AI to Bing and it started <span
+          class="warning">threatening users</span> and professing its love to them? Or when GitHub Copilot suggested
+        code with <span class="warning">security vulnerabilities</span>? Or when AI chatbots started giving medical
+        advice that could <span class="blinking">literally kill people</span>? Yeah, that's your "revolutionary AI
+        feature" waiting to happen.</p>
+    </div>
+
+    <h3>PRIVACY CONCERNS, YOU RECKLESS <span class="underline">DATA-HOARDING</span> MONSTER</h3>
+    <p>To train your magical AI, you need data. <span class="big-text">Lots of it.</span> And where does that data come
+      from? <span class="highlight">Your users</span>, you creepy surveillance capitalist. Every time you "add AI,"
+      you're likely adding more invasive tracking, more data collection, and more reasons for people to distrust your
+      product.</p>
+
+    <div class="warning-block">
+      <p><span class="uppercase">Privacy nightmare scenario:</span> Your users are sharing personal information with
+        your app, thinking it's just between them and your service. What they don't know is that your fancy new AI
+        feature is <span class="monospace">analyzing, storing, and potentially sharing</span> this information in ways
+        they never agreed to.
+      </p>
+    </div>
+
+    <h3>YOUR AI IS PROBABLY MAKING THINGS WORSE, NOT BETTER</h3>
+    <p>That AI feature you're so proud of? It's probably adding <span class="highlight">5 seconds of loading
+        time</span>, eating battery like a starved vampire, and producing results that are wrong half the time. Is that
+      really better than a simple, fast, reliable feature that just works? No, it <span class="cursing">fucking</span>
+      isn't.</p>
+
+    <h2>THE <span class="cursing">BULLSHIT</span> EXCUSES YOU USE TO JUSTIFY AI</h2>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3>"BUT MY COMPETITORS ARE DOING IT!"</h3>
+        <p>If your competitors jumped off a bridge, would you do it too? Oh wait, you probably would, you mindless
+          <span class="highlight">hype-zombie</span>. Being different by being <span class="highlight">BETTER</span> is
+          a competitive advantage. Let
+          your competitors waste resources on shitty AI while you focus on making a product that <span
+            class="success">actually works</span>.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>"IT'S THE <span class="gradient-text">FUTURE</span>!"</h3>
+        <p>So was Google Glass. So was 3D TV. So were QR code restaurants. The "future" is full of dead ends and
+          abandoned technologies. Build for <span class="underline">actual user needs</span>, not because some VC-funded
+          blog told you AI is hot right now.</p>
+      </div>
+
+      <div class="card">
+        <h3>"USERS <span class="strike">EXPECT</span> IT!"</h3>
+        <p>No, they <span class="cursing">fucking</span> don't. Users expect reliability, speed, and features that solve
+          their problems. They don't wake up thinking, <span class="italic">"Gosh, I hope my weather app uses machine
+            learning today!"</span> They want to know if it's going to rain, <span class="cursing">dipshit</span>.</p>
+      </div>
+    </div>
+
+    <h2>WHEN SHOULD YOU AVOID AI, YOU <span class="cursing">BUZZWORD-CHASING</span> LEMMING?</h2>
+    <ul>
+      <li>When the traditional solution <strong>already works <span class="success">perfectly fine</span></strong>.</li>
+      <li>When you can't explain <strong><span class="underline">exactly how</span> it improves the user
+          experience</strong>.</li>
+      <li>When adding it would <strong>compromise user <span class="warning">privacy</span></strong>.</li>
+      <li>When the AI component is <strong><span class="warning">less reliable</span></strong> than non-AI alternatives.
+      </li>
+      <li>When you're adding it <strong>just to seem <span class="strike">cutting-edge</span></strong>, you pathetic
+        buzzword-chaser.</li>
+      <li>When you don't have the resources to <strong>properly <span class="monospace">maintain and
+            improve</span></strong> an AI system.</li>
+      <li>When your users <strong><span class="highlight">aren't asking for it</span></strong>.</li>
+    </ul>
+
+    <h2>THE <span class="cursing">FUCKING</span> AI HYPE CYCLE <span class="glowing-text">EXPLAINED</span></h2>
+    <ol>
+      <li><strong>Initial Buzz:</strong> <span class="handwritten">"Our AI will revolutionize [insert mundane
+          task]!"</span></li>
+      <li><strong>VC Money:</strong> <span class="handwritten">"Here's $50 million for adding AI to
+          toothbrushes!"</span></li>
+      <li><strong>Mediocre Implementation:</strong> <span class="handwritten">"Our AI is still learning, please be
+          patient!"</span></li>
+      <li><strong>User Frustration:</strong> <span class="handwritten">"Why can't I just have a button that does
+          this?"</span></li>
+      <li><strong>Quiet Removal:</strong> <span class="monospace">// Changelog: v2.5.4 - Streamlined interface, improved
+          performance (removed AI)</span></li>
+    </ol>
+
+    <h2>SIGNS YOUR PRODUCT DOESN'T NEED <span class="cursing">FUCKING</span> AI</h2>
+    <ul>
+      <li>Your users can accomplish their goals in <strong>less than <span class="success">5 steps</span></strong>.</li>
+      <li>The problem you're solving has <strong>clear, <span class="underline">predictable parameters</span></strong>.
+      </li>
+      <li>An incorrect result would be <strong><span class="warning">worse than no result</span> at all</strong>.</li>
+      <li>Your product's value proposition has nothing to do with <strong><span class="strike">"being
+            smart"</span></strong>.</li>
+      <li>You can't explain the AI's decision-making process <strong><span class="underline">transparently</span> to
+          users</strong>.</li>
+      <li>You're considering AI because <strong>you saw it in a <span class="strike">competitor's press
+            release</span></strong>.</li>
+    </ul>
+
+    <h2>REAL EXAMPLES OF UNNECESSARY AI THAT MADE PRODUCTS <span class="warning">WORSE</span></h2>
+    <div class="examples-grid">
+      <div class="example-block">
+        <h3>Email <span class="strike">"Smart"</span> Compose</h3>
+        <p>Suggesting generic, corporate jargon that makes everyone sound like an <span
+            class="monospace">AI-generated</span> LinkedIn influencer.</p>
+      </div>
+
+      <div class="warning-block">
+        <h3>AI Customer Service Chatbots</h3>
+        <p>Going through a labyrinth of useless suggestions before finally admitting <span class="handwritten">"I can't
+            help with that, here's a human."</span></p>
+      </div>
+
+      <div class="example-block">
+        <h3>Photo <span class="strike">"Enhancement"</span></h3>
+        <p>Automatically making everyone's skin unnaturally smooth and eyes bigger, perpetuating <span
+            class="warning">harmful beauty standards</span>.</p>
+      </div>
+
+      <div class="warning-block">
+        <h3><span class="strike">"Smart"</span> Settings</h3>
+        <p>Changing your preferences without asking, then making it <span class="highlight">impossible to find</span>
+          how to turn it off.</p>
+      </div>
+    </div>
+
+    <h2>THE REAL <span class="cursing">FUCKING</span> PROBLEM ISN'T AI. IT'S <span class="highlight">YOU</span>, YOU
+      MISGUIDED FOOL.</h2>
+    <p>AI isn't inherently bad. There are legitimate use cases where it makes sense. The problem is developers, product
+      managers, and CEOs who think slapping AI onto every feature is a substitute for <span class="underline">actual
+        product design</span> and problem-solving.</p>
+
+    <p>It's using a <span class="warning">military-grade flamethrower</span> to light a birthday candle. It's like
+      adding a <span class="warning">jet engine</span> to a skateboard when what you needed was better wheels. It's
+      solving problems that <span class="highlight">don't exist</span> while ignoring the ones that do.</p>
+
+    <h2>WHEN AI <span class="success">ACTUALLY</span> MAKES SENSE</h2>
+    <p>Let's be fair. There are times when AI can genuinely enhance a product:</p>
+    <ul>
+      <li>When tackling problems with <strong>genuine <span class="underline">complexity and ambiguity</span></strong>
+        that benefit from pattern recognition.</li>
+      <li>When the cost of a false negative is <strong><span class="warning">much higher</span> than a false
+          positive</strong> (like security threat detection).</li>
+      <li>When processing <strong>natural language at <span class="big-text">scale</span></strong> (like moderating
+        millions of comments).</li>
+      <li>When personalizing experiences based on <strong><span class="monospace">massive datasets</span></strong> that
+        would be impossible to analyze manually.</li>
+      <li>When handling tasks where <strong>human oversight is <span class="success">still present</span></strong> for
+        important decisions.</li>
+    </ul>
+
+    <h2>HOW TO <span class="success">ACTUALLY</span> MAKE GOOD PRODUCT DECISIONS</h2>
+    <ol>
+      <li><strong>Start with <span class="highlight">user problems</span>, not solutions.</strong> <span
+          class="strike">"We need AI"</span> is not a user problem.</li>
+      <li><strong>Test with <span class="highlight">real users</span> before committing.</strong> Their confusion is
+        your warning sign.</li>
+      <li><strong>Consider the <span class="underline">maintenance cost</span>.</strong> AI systems need constant
+        babysitting.</li>
+      <li><strong>Have a <span class="success">fallback option</span>.</strong> What happens when your AI goes haywire?
+      </li>
+      <li><strong>Be <span class="underline">honest</span> about limitations.</strong> Transparency builds trust when
+        your AI inevitably screws up.</li>
+    </ol>
+
+    <p>So, for your next feature update... for the love of all that is holy, <span class="highlight blinking">THINK
+        BEFORE YOU ADD AI</span>. Ask yourself if it's actually making your product better or if you're just chasing a
+      trend. Your users (and your future self maintaining this nightmare) will thank you.</p>
+
+    <p class="big-text">Now get back to work, and build something that's <span class="success">actually useful</span>,
+      not just another AI gimmick to pad your resume.</p>
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-tagline">STOP ADDING AI</div>
+
+        <div class="footer-content">
+          <div>
+            <p class="footer-description">A plea for sanity in the age of unnecessary artificial intelligence. Because
+              not everything needs AI, and most things are actually worse with it.</p>
+
+            <div class="social-links">
+              <a href="https://github.com/virajbhartiya" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-github"></i> <span>@virajbhartiya</span>
+              </a>
+              <a href="https://virajbhartiya.com" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-globe"></i> <span>virajbhartiya.com</span>
+              </a>
+              <a href="https://twitter.com/heyxviraj" class="social-link" target="_blank" rel="noopener noreferrer">
+                <i class="fa-brands fa-x-twitter"></i> <span>@heyxviraj</span>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <p class="footer-description">Created with <span class="highlight">zero AI assistance</span> because we're
+              not
+              <span class="cursing">fucking</span> hypocrites.
+            </p>
+            <p class="footer-description">Inspired by <a href="https://justfuckingusehtml.com" target="_blank"
+                rel="noopener noreferrer">justfuckingusehtml.com</a></p>
+          </div>
+        </div>
+
+        <div class="footer-divider"></div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Toggle theme function
+    document.querySelector('.toggle-theme').addEventListener('click', function () {
+      document.body.classList.toggle('light-theme');
+
+      // We don't need to change the icon anymore since we're using a half-circle icon
+      // that works for both light and dark modes
+    });
+  </script>
+</body>
+
+</html>
